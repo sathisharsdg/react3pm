@@ -1,0 +1,10 @@
+.colorbg{
+    height: 400px;
+    width: 300px;
+    background-color: red;
+}
+.newcolorbg{
+    height: 400px;
+    width: 300px;
+    background-color: rgb(40, 5, 86);
+}
