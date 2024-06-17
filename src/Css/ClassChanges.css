@@ -8,3 +8,6 @@
     width: 300px;
     background-color: rgb(40, 5, 86);
 }
+.textcase{
+    display: flex;
+}
