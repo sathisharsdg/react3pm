@@ -1,30 +1,26 @@
-import React, { useState } from 'react'
-import Userone from './Components/Userone';
-import Usertwo from './Components/Usertwo';
-import Datagenerator from './Components/Datagenerator';
-import Allist from './Components/Allist';
-
+import React from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Home from './Pages/Home'
+import Sampledata from './Pages/Sampledata'
 function App() {
-  // const [show,setShow] = useState(false);
-  // const showHideComponents = ()=>{
-  //     setShow(!show)
-  // }
-
   return (
     <div>
-       {/* <button onClick={showHideComponents}>CLICK</button>
-
-       {
-          show === true ? <Userone/> : <Usertwo/>
-       } */}
-
-
-       <Datagenerator/>
-       <Allist/>
-
-      
-       
-       
+      <BrowserRouter>
+        <ul class="nav">
+          <li class="nav-item">
+            <Link to="/" className='nav-link'>HOME</Link>         
+             
+          </li>
+          <li class="nav-item">
+          <Link to="/sample" className='nav-link'>SAMPLE DATA</Link>
+          </li>
+         
+        </ul>
+        <Routes>
+          <Route path='/' exact element={<Home />}></Route>
+          <Route path='/sample' exact element={<Sampledata />}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
