@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 function Users() {
     const [userData,setUserData] = useState([]);
-
+    const redirectpage = useNavigate()
     const getuserapi = async ()=>{
         await axios.get("https://665969a6de346625136c4408.mockapi.io/users")
         .then((r)=>{
@@ -20,10 +21,19 @@ function Users() {
               getuserapi();
               
          }).catch((er)=>{
-              console.log(er);
+             console.log(er);
          })
     }
 
+    const onEditData = (data)=>{
+        redirectpage("/update");
+        localStorage.setItem("id", data.id);
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("role", data.role);
+        localStorage.setItem("salary", data.salary);
+        localStorage.setItem("location", data.location);
+    }
     useEffect(()=>{
         getuserapi()
     },[])
@@ -58,7 +68,7 @@ function Users() {
                                               <td>{res.role}</td>
                                               <td>{res.salary}</td>
                                               <td>
-                                              <button className='brn btn-primary mx-3'>Edit</button>
+                                              <button className='brn btn-primary mx-3' onClick={()=>onEditData(res)}>Edit</button>
                                               <button className='brn btn-danger' onClick={()=>deleteData(res.id)}>Delete</button>
                                               </td>
                                           </tr>
